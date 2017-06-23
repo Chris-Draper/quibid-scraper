@@ -1,0 +1,57 @@
+This text file features the research I had to do to make the web scraper work
+
+Xpath Cheat Sheet Link
+http://ricostacruz.com/cheatsheets/xpath.html
+
+Python - What is threading?
+- Threading is used to run multiple tasks
+- The tasks are not executed on different CPUs
+- Will not make your program faster if you already use 100% CPU power
+- Used when the execution of a task involves some level of waiting
+- Threading allows python to execute other code while it is waiting
+
+Python - What is multiprocessing?
+- Uses subprocesses instead of threads
+- Allows you to fully leverage multiple processors on a machine
+- Side steps the Global Interpreter Lock by using subprocesses instead of threads
+- The GIL makes it very effecient to do single processor tasks which are used the most
+- "Locking the entire interpreter makes it easier for the interpreter to be multi-threaded
+at the expense of much of the parallelism afforded by multi-processor machines"
+
+Now I have an implementation of the program that I think works. How do I test that I grab the optimal number of auction links?
+First, you need to track all of the auctions that come up on the website page in one program
+In a separate program, track all of the auctions that you web scrape
+See if the two programs match each other. If they do, then you know that you correctly scraped all of the auction data
+
+---------------
+Notes about sql data base implementation
+
+Used a dope ORM called peewee and it was actually easy to use and awesome
+Check the databases > python-databases > peewee folder to see everything
+
+---------------
+
+How to fix this error
+
+OSError: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+
+First off, I read this basic info about the Windows Registry
+https://msdn.microsoft.com/en-us/library/windows/desktop/ms724946(v=vs.85).aspx
+
+Follow the info on this link for step by step instructions on how to correctly change the registry values
+https://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx
+
+Basically, go into the registery of the machine and change the socket range 
+and how long your machine waits to reuse a socket to avoid running out of sockets
+
+------------------
+
+Connecting to the MySQL Database on "Host Department"
+
+Setup up the database and a mysql user with all permissions
+MAKE SURE TO ADD THE IP ADDRESSES OF YOUR COMPUTER TO THE REMOTE MYSQL IP ADDRESS LIST
+
+-----------------
+ I also used this link to reset the ASUS computer so that I could use it as a bot to run the scrapers
+
+http://www.tomshardware.com/forum/id-2758225/windows-restart-loop-blue-screen-error.html
