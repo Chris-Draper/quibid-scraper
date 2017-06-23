@@ -1,12 +1,14 @@
 from selenium import webdriver
 from queue import Queue
 import datetime
+import os
 import random
 import time
 
 def get_auction_data(link):
 	# open new chrome browser window
-	chromedriver_path = "C:/Users/chris/OneDrive/Documents/github/web-scrapers/chromedriver"
+	relative_dir = os.getcwd()
+	chromedriver_path = relative_dir + '\chromedriver'
 	driver = webdriver.Chrome(chromedriver_path)  
 	driver.get(link)
 	# scrape title and set-up variables
@@ -83,4 +85,4 @@ def handle_timeout(driver):
 
 # this code allows for manual testing of method by copying / pasting links
 if __name__ == '__main__':
-	get_auction_data("http://www.quibids.com/en/auction-698134313US-C1593-15-voucher-bids")
+	get_auction_data("http://www.quibids.com/en/auction-452119650US-C1347-250-voucher-bids")

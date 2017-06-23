@@ -4,17 +4,21 @@ Copy and pasted from the last block of code
 
 If you remove the Queue lock on lines 29 - 35 you may complete things from the queue out of order
 '''
-from selenium import webdriver
-from msvcrt import getch # for detecting esc key press to end the program
-import queue
-import threading
-import time
 from link_scrape import load_auction_links, update_auction_links
 from auction_scrape import get_auction_data
 from store_auction_data import store_auction_data
+# everything above is imported from project files
+from selenium import webdriver
+from msvcrt import getch # for detecting esc key press to end the program
+import os # for grabbing the chrome_driver file path
+import queue
+import threading
+import time
+
 
 exitFlag = 0 # don't forget this is a global var
-chromedriver_path = "C:/Users/chris/OneDrive/Documents/github/web-scrapers/chromedriver"
+relative_dir = os.getcwd()
+chromedriver_path = relative_dir + '\chromedriver'
 queueLock = threading.Lock()
 link_q = queue.Queue()
 link_driver = webdriver.Chrome(chromedriver_path)
