@@ -55,3 +55,15 @@ MAKE SURE TO ADD THE IP ADDRESSES OF YOUR COMPUTER TO THE REMOTE MYSQL IP ADDRES
  I also used this link to reset the ASUS computer so that I could use it as a bot to run the scrapers
 
 http://www.tomshardware.com/forum/id-2758225/windows-restart-loop-blue-screen-error.html
+
+------------------
+
+It may be worth looking into running this program on Amazon Web Services once it is air tight and debugged
+
+This talk about the boto library which is used to run python code on Amazon Servers
+https://aws.amazon.com/articles/3998
+
+And this is the pricing scheme for Amazon Web Services. It can work out to about $100 a year to rent a server for what you need
+https://aws.amazon.com/emr/pricing/
+
+Obviously you would have to do way more research into this, but if your ASUS i5 bites the dust this is the next option
