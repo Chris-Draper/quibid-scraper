@@ -1,10 +1,9 @@
 '''
-This is used to test bits of code I was working on
+These methods feed the auction links into the queue. Links are pulled from the queue by threads
 
 This is how you grab the first five links in the document
 driver.find_elements_by_xpath("(//h5[@class='auction-item-title'])[position() <= 5]/a")
 '''
-
 from selenium import webdriver
 from queue import Queue
 
