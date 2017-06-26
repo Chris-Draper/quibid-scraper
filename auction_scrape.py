@@ -12,13 +12,23 @@ def get_auction_data(link):
 	driver = webdriver.Chrome(chromedriver_path)  
 	driver.get(link)
 	# scrape title and set-up variables
-	auc_title = driver.find_element_by_xpath("//h1[@id='product_title']").text
+	auc_title = driver.find_elements_by_xpath("//h1[@id='product_title']")
+	if len(auc_title) == 0:
+		print("Error occurred. Could not find auction title. Returning None to reset scraping process")
+		driver.quit()
+		return None
+	auc_title = auc_title[0].text
 	new_max_price = 0
 	old_max_price = 0
 	bids_array = []
 
 	# check that we are watching the beginning of the auction and can scrape complete data
-	cur_auc_price_string = driver.find_element_by_xpath("//div[@id='auction-left']/div/p/span[@class='price']").text
+	cur_auc_price_string = driver.find_elements_by_xpath("//div[@id='auction-left']/div/p/span[@class='price']")
+	if len(cur_auc_price_string) == 0:
+		print("Error occurred. Could not find auction price. Returning None to reset scraping process")
+		driver.quit()
+		return None
+	cur_auc_price_string = cur_auc_price_string[0].text
 	cur_auc_price = float(cur_auc_price_string[1:])
 	if not cur_auc_price < 0.07:
 		driver.quit()
@@ -85,4 +95,4 @@ def handle_timeout(driver):
 
 # this code allows for manual testing of method by copying / pasting links
 if __name__ == '__main__':
-	get_auction_data("http://www.quibids.com/en/auction-452119650US-C1347-250-voucher-bids")
+	get_auction_data("http://quibids.com/en/auction-572634636US-C1593-15-voucher-bids")
