@@ -4,8 +4,9 @@ Copy and pasted from the last block of code
 
 If you remove the Queue lock on lines 29 - 35 you may complete things from the queue out of order
 '''
-from link_scrape import load_auction_links, update_auction_links
 from auction_scrape import get_auction_data
+from handle_page_timeout import handle_page_timeout
+from link_scrape import load_auction_links, update_auction_links
 from store_auction_data import store_auction_data
 # everything above is imported from project files
 from selenium import webdriver
@@ -65,6 +66,7 @@ def open_auction(threadName, link_q):
 
 def refill_link_q():
     global link_q
+    handle_page_timeout(link_driver)
     link_q = update_auction_links(link_driver, link_q)
 
 def run_scraper():

@@ -1,3 +1,4 @@
+from handle_page_timeout import handle_page_timeout
 from selenium import webdriver
 from queue import Queue
 import datetime
@@ -62,7 +63,7 @@ def get_auction_data(link):
 								bids_array.append(bid_data)
 								print(bid_data)
 				old_max_price = new_max_price
-				handle_timeout(driver)
+				handle_page_timeout(driver)
 		except: 
 			pass
 
@@ -82,16 +83,6 @@ def get_auction_data(link):
 		# if there are no bids in the data collected, an error occurred
 		# return none and don't store bad data in db
 		return None
-
-def handle_timeout(driver):
-	timeout_button = driver.find_elements_by_xpath("//a[contains(@onclick, 'location.reload(true);')]")
-	if len(timeout_button) > 0:
-		end_wait = random.randint(1, 60)
-		start_wait = time.time()
-		duration_wait = 0
-		while end_wait > duration_wait:
-			duration_wait = time.time() - start_wait
-		timeout_button[0].click()
 
 # this code allows for manual testing of method by copying / pasting links
 if __name__ == '__main__':
